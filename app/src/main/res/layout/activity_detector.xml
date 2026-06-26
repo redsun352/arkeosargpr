@@ -28,42 +28,65 @@
             android:textSize="13sp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Live value + column bar -->
-        <LinearLayout
+        <!-- Spectrum bar (top strip, matches the reference app's frequency-bar look) -->
+        <com.arkeosar.groundscan.ui.LiveSpectrumBarView
+            android:id="@+id/spectrumBarView"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/surface_panel"
+            android:layout_marginBottom="5dp" />
+
+        <!-- Line graph -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/surface_panel"
+            android:layout_marginBottom="5dp">
+
+            <com.arkeosar.groundscan.ui.LiveLineGraphView
+                android:id="@+id/lineGraphView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/liveValueText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:padding="6dp"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:fontFamily="monospace" />
+        </FrameLayout>
+
+        <!-- Live heatmap, color/size driven by the selected function -->
+        <com.arkeosar.groundscan.ui.LiveHeatmapView
+            android:id="@+id/heatmapView"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:orientation="horizontal"
             android:background="@color/surface_panel"
-            android:padding="8dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="8dp" />
 
-            <com.arkeosar.groundscan.ui.LiveColumnGraphView
-                android:id="@+id/columnGraphView"
-                android:layout_width="48dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="12dp" />
+        <!-- Single-value bar, kept alongside the heatmap as a compact numeric gauge -->
+        <com.arkeosar.groundscan.ui.LiveColumnGraphView
+            android:id="@+id/columnGraphView"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_marginBottom="16dp" />
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+        <!-- Function picker: which axis combination drives the value above -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detector_function_label"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
 
-                <com.arkeosar.groundscan.ui.LiveLineGraphView
-                    android:id="@+id/lineGraphView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TextView
-                    android:id="@+id/liveValueText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|end"
-                    android:padding="6dp"
-                    android:textColor="@color/text_primary"
-                    android:textSize="18sp"
-                    android:fontFamily="monospace" />
-            </FrameLayout>
-        </LinearLayout>
+        <Spinner
+            android:id="@+id/spinnerFunction"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp" />
 
         <!-- Gain control -->
         <TextView

@@ -111,4 +111,5 @@
     <string name="noise_measurement_start_button">Başlat</string>
     <string name="noise_measurement_result">Ölçülen gürültü tabanı: %.3f</string>
     <string name="detector_frequency_label">Frekans bileşenleri (FFT, düşük frekans bandı)</string>
+    <string name="detector_function_label">Fonksiyon (gösterilen eksen kombinasyonu)</string>
 </resources>

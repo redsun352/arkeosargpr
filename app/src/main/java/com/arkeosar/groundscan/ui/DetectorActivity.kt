@@ -8,10 +8,12 @@ import com.arkeosar.groundscan.data.ScanReading
 import com.arkeosar.groundscan.data.ScanSourceState
 import com.arkeosar.groundscan.data.ScanSourceType
 import com.arkeosar.groundscan.databinding.ActivityDetectorBinding
+import com.arkeosar.groundscan.render.DisplayFunction
 import com.arkeosar.groundscan.sensors.InternalSensorSource
 import com.arkeosar.groundscan.sensors.MagnetometerCalibration
 import com.arkeosar.groundscan.sensors.MagnetometerSignalProcessor
 import com.arkeosar.groundscan.sensors.SimpleFft
+import android.widget.ArrayAdapter
 
 /**
  * Live single-point magnetometer detector screen.
@@ -58,6 +60,9 @@ class DetectorActivity : AppCompatActivity() {
     /** Detection threshold currently in effect (0 = no deadzone applied yet). */
     private var noiseThreshold: Float = 0f
 
+    /** Which axis combination drives the value shown - mirrors the reference app's function picker. */
+    private var currentFunction: DisplayFunction = DisplayFunction.XYZ
+
     /** True while accumulating samples for the "measure noise" action. */
     private var measuringNoise: Boolean = false
 
@@ -68,6 +73,8 @@ class DetectorActivity : AppCompatActivity() {
 
         calibration = MagnetometerCalibration(this)
         sensorSource = InternalSensorSource(this)
+
+        setupFunctionPicker()
 
         binding.gainSlider.valueFrom = 0f
         binding.gainSlider.valueTo = GAIN_SLIDER_MAX
@@ -110,10 +117,35 @@ class DetectorActivity : AppCompatActivity() {
         binding.statusText.text = "${getString(com.arkeosar.groundscan.R.string.source_internal_sensor)} — $label"
     }
 
+    /**
+     * Mirrors [ScanActivity]'s function picker: the same [DisplayFunction]
+     * enum drives both screens, so the seven X/Y/Z/XY/YZ/XZ/XYZ options
+     * and their labels stay consistent across the app.
+     */
+    private fun setupFunctionPicker() {
+        val labels = DisplayFunction.entries.map { it.label }
+        binding.spinnerFunction.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, labels)
+        binding.spinnerFunction.setSelection(DisplayFunction.entries.indexOf(currentFunction))
+        binding.spinnerFunction.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                currentFunction = DisplayFunction.entries[position]
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+        }
+    }
+
     private fun onReading(reading: ScanReading) {
-        // reading.value is already the calibrated XYZ magnitude
-        // (InternalSensorSource applies hard-iron bias correction).
-        noiseEstimator.addSample(reading.value)
+        // Recompute the scalar from raw X/Y/Z using whichever function is
+        // selected, instead of always using reading.value (which is fixed
+        // to XYZ magnitude). Falls back to reading.value if a source
+        // doesn't expose raw axes (e.g. a Bluetooth probe).
+        val functionValue = if (reading.rawX != null && reading.rawY != null && reading.rawZ != null) {
+            currentFunction.apply(reading.rawX, reading.rawY, reading.rawZ)
+        } else {
+            reading.value
+        }
+
+        noiseEstimator.addSample(functionValue)
 
         if (measuringNoise && noiseEstimator.isFull) {
             finishMeasureNoise()
@@ -123,7 +155,7 @@ class DetectorActivity : AppCompatActivity() {
         val preserveSign = binding.preserveSignSwitch.isChecked
 
         val boosted = MagnetometerSignalProcessor.process(
-            rawValue = reading.value,
+            rawValue = functionValue,
             gainExponent = gainExponent,
             noiseThreshold = noiseThreshold,
             preserveSign = preserveSign
@@ -132,6 +164,7 @@ class DetectorActivity : AppCompatActivity() {
         pushHistory(boosted)
         binding.lineGraphView.updateValues(history.toList())
         binding.columnGraphView.setValue(boosted)
+        binding.heatmapView.setValue(boosted)
         binding.liveValueText.text = String.format("%.3f", boosted)
 
         updateFrequencyView(boosted)
@@ -153,6 +186,7 @@ class DetectorActivity : AppCompatActivity() {
 
         val magnitudes = SimpleFft.lowFrequencyMagnitudes(fftWindow.toList())
         binding.frequencyGraphView.updateValues(magnitudes)
+        binding.spectrumBarView.updateMagnitudes(magnitudes)
     }
 
     private fun pushHistory(value: Float) {
