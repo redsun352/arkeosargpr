@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">ArkeoSAR Ground Scan</string>
+
+    <string name="menu_magnetometer">Manyetometre</string>
+    <string name="menu_calibration">Kalibrasyon</string>
+    <string name="section_gpr">GPR</string>
+    <string name="menu_gpr">GPR Taraması</string>
+
+    <string name="scan_area_title">Tarama Alanı</string>
+    <string name="scan_area_width_label">Genişlik (m)</string>
+    <string name="scan_area_length_label">Uzunluk (m)</string>
+    <string name="scan_area_meters_hint">örn. 5</string>
+    <string name="scan_area_start_direction_label">Taramaya Başlama Yönü</string>
+    <string name="scan_area_start_left">Soldan</string>
+    <string name="scan_area_start_right">Sağdan</string>
+    <string name="scan_area_start_button">Taramaya Başla</string>
+    <string name="scan_area_grid_preview">Izgara: %1$d × %2$d kare</string>
+    <string name="scan_area_invalid_input">Lütfen geçerli genişlik ve uzunluk değerleri girin</string>
+    <string name="gpr_disclaimer">⚠ Bu özellik dahili manyetometre verisini GPR (yer radarı) analiz teknikleriyle işler. Gerçek bir GPR cihazı değildir; derinlik değerleri şematik bir modelle tahmin edilmiştir.</string>
+    <string name="menu_ground_scan">3 Boyutlu Zemin Tarama</string>
+    <string name="menu_settings">Ayarlar</string>
+    <string name="menu_files">Kayıtlı Taramalar</string>
+
+    <string name="settings_title">Tarama Ayarları</string>
+    <string name="settings_area_meters">Tarama Alanı (metre)</string>
+    <string name="settings_auto_mode">Otomatik Mod</string>
+    <string name="settings_zigzag">Zigzag Tarama Deseni</string>
+    <string name="settings_save">Kaydet</string>
+    <string name="settings_source_info">Tarama, önce harici OKM cihazına bağlanmayı dener; cihaz bulunamazsa otomatik olarak telefonun dahili sensörüne geçer.</string>
+
+    <string name="scan_connect">Cihaza Bağlanılıyor…</string>
+    <string name="scan_connected">Bağlandı</string>
+    <string name="scan_disconnected">Bağlantı Kesildi</string>
+    <string name="scan_no_device">OKM Rover cihazı bulunamadı</string>
+    <string name="please_wait">Lütfen Bekleyiniz…</string>
+    <string name="grid_measure_button">Ölç</string>
+    <string name="grid_stacking_progress">Ölçülüyor… %1$d/%2$d</string>
+    <string name="grid_mode_automatic">Otomatik</string>
+    <string name="grid_mode_manual">Manuel</string>
+    <string name="settings_dewow_label">Dewow Filtresi Uygula</string>
+    <string name="settings_dewow_hint">Yavaş taban çizgisi sapmasını giderir (GPR tarzı ön işleme)</string>
+    <string name="scan_save_dialog_title">Taramayı Kaydet</string>
+    <string name="scan_filename_hint">Dosya adı</string>
+
+    <string name="source_bluetooth_probe">Harici Cihaz</string>
+    <string name="source_internal_sensor">Dahili Sensör</string>
+
+    <string name="tool_ruler">Ölçüm</string>
+    <string name="tool_view_mode">Görünüm Modu</string>
+    <string name="tool_zoom">Yakınlaştır</string>
+    <string name="tool_camera">Ekran Görüntüsü</string>
+    <string name="tool_mode_grid">Izgara Görünümü</string>
+    <string name="tool_mode_wireframe">Tel Kafes Görünümü</string>
+    <string name="tool_mode_surface">Yüzey Görünümü</string>
+    <string name="tool_mode_pointcloud">Nokta Bulutu Görünümü</string>
+    <string name="tool_save">Kaydet</string>
+
+    <string name="interpolation_settings_title">Enterpolasyon Ayarları</string>
+    <string name="function_label">Fonksiyon</string>
+    <string name="threshold_label">Eşik</string>
+    <string name="interpolation_thin_plate">İnce Plaka</string>
+    <string name="palette_label">Renk Skalası</string>
+    <string name="export_csv">CSV Olarak Dışa Aktar</string>
+    <string name="csv_exported">CSV kaydedildi:</string>
+
+    <string name="view_mode_2d">2D</string>
+    <string name="view_mode_surface_3d">3D Yüzey</string>
+    <string name="view_mode_volumetric">3D Hacimsel</string>
+    <string name="schematic_depth_disclaimer">⚠ Şematik derinlik modeli — gerçek ölçüm değildir, tahminidir</string>
+    <string name="assumed_depth_label">Varsayılan Derinlik</string>
+
+    <string name="calibration_title">Kalibrasyon</string>
+    <string name="calibration_raw_data">Ham Veriler</string>
+    <string name="calibration_start">Başlat tuşunu sağa kaydırın</string>
+    <string name="calibration_stop">Bitir Ve Kaydet</string>
+    <string name="calibration_steps_title">Kalibrasyon Adımları</string>
+    <string name="calibration_steps_body">1- Başlat tuşunu sağa kaydırın.\n2- Sensörden toplanan verilerle ekranda grafiklerin çizilmeye başladığını göreceksiniz.\n3- Telefonunuzu XY ekseninde, ekrandaki örneğe göre yan tutun ve yavaşça çevirin.\n4- Telefonunuzu YZ ekseninde, ekrandaki örneğe göre dik tutun ve yavaşça çevirin.\n5- Telefonunuzu XZ ekseninde, ekrandaki örneğe göre yatay tutun ve yavaşça çevirin.\n6- Grafik üzerinde kırmızı, yeşil ve mavi noktaların bir daire/elips oluşturduğundan emin olun.</string>
+    <string name="calibration_finish_save">Kalibrasyonu Tamamla ve Kaydet</string>
+    <string name="calibration_saved">Kalibrasyon kaydedildi</string>
+    <string name="calibration_need_more_samples">Daha fazla veri gerekiyor — telefonu farklı eksenlerde çevirin</string>
+    <string name="calibration_clear">Kalibrasyonu Sıfırla</string>
+
+    <string name="bscan_title">B-Scan Kesit Görünümü</string>
+    <string name="bscan_disclaimer">⚠ Bu bir GPR (yer radarı) verisi değildir. Telefonun manyetometresi statik manyetik alanı ölçer, radar darbesi göndermez. Burada gösterilen derinlik, şematik bir model ile tahmin edilmiştir — gerçek bir zaman-derinlik ölçümü değildir.</string>
+    <string name="bscan_axis_row">Satır boyunca</string>
+    <string name="bscan_axis_column">Sütun boyunca</string>
+    <string name="bscan_line_label">Hat</string>
+    <string name="menu_bscan">B-Scan Kesit</string>
+
+    <string name="vector_view_title">Vektörel Analiz</string>
+    <string name="vector_view_x">X Bileşeni</string>
+    <string name="vector_view_y">Y Bileşeni</string>
+    <string name="vector_view_z">Z Bileşeni</string>
+    <string name="vector_view_magnitude">Büyüklük (|V|)</string>
+
+    <string name="files_empty">Henüz kayıtlı tarama yok</string>
+    <string name="files_delete">Sil</string>
+    <string name="files_open">Aç</string>
+
+    <string name="permission_bluetooth_required">Bluetooth izni gereklidir</string>
+    <string name="permission_location_required">Bluetooth taraması için konum izni gereklidir</string>
+</resources>

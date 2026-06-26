@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_deep">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bscan_title"
+            android:textColor="@color/signal_amber"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#332A1A"
+        android:padding="10dp"
+        android:textColor="@color/signal_amber"
+        android:textSize="12sp"
+        android:text="@string/bscan_disclaimer" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchAxis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bscan_axis_row"
+            android:textColor="@color/text_primary"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bscan_line_label"
+            android:textColor="@color/text_secondary"
+            android:layout_marginEnd="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/lineIndexText"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:gravity="center"
+            android:text="0" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="16dp">
+
+        <com.arkeosar.groundscan.ui.BScanView
+            android:id="@+id/bScanView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+</LinearLayout>

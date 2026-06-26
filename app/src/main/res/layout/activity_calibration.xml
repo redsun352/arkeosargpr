@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_deep">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calibration_title"
+            android:textColor="@color/signal_amber"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <com.arkeosar.groundscan.ui.CalibrationGraphView
+                android:id="@+id/graphXY"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="0" />
+
+            <com.arkeosar.groundscan.ui.CalibrationGraphView
+                android:id="@+id/graphYZ"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="1" />
+
+            <com.arkeosar.groundscan.ui.CalibrationGraphView
+                android:id="@+id/graphXZ"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_columnWeight="1"
+                android:layout_row="1"
+                android:layout_column="0" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_columnWeight="1"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <View android:layout_width="10dp" android:layout_height="10dp" android:background="#E0483B" android:layout_marginEnd="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="XY" android:textColor="@color/text_primary" android:layout_marginEnd="12dp"/>
+                    <View android:layout_width="10dp" android:layout_height="10dp" android:background="#2DBE6C" android:layout_marginEnd="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YZ" android:textColor="@color/text_primary" android:layout_marginEnd="12dp"/>
+                    <View android:layout_width="10dp" android:layout_height="10dp" android:background="#1C5FA8" android:layout_marginEnd="6dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="XZ" android:textColor="@color/text_primary"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/coverageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/text_secondary"
+                    android:text="@string/calibration_raw_data" />
+
+            </LinearLayout>
+
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/sampleCountText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_secondary"
+            android:text="" />
+
+        <!-- Swipe-to-start control -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_toolbar_pill">
+
+            <TextView
+                android:id="@+id/startStopLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@string/calibration_start" />
+
+            <View
+                android:id="@+id/startStopHandle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="4dp"
+                android:background="@color/signal_amber" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/signal_amber"
+            android:textStyle="bold"
+            android:text="@string/calibration_steps_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_secondary"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/calibration_steps_body" />
+
+        <Button
+            android:id="@+id/btnFinishSave"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/calibration_finish_save"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+</ScrollView>
