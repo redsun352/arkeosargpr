@@ -51,6 +51,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.DetectorActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.ScanAreaSetupActivity"
             android:exported="false" />
 

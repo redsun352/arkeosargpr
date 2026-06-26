@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        binding.btnDetector.setOnClickListener {
+            startActivity(Intent(this, DetectorActivity::class.java))
+        }
+
         binding.btnGroundScan.setOnClickListener {
             showScanModeDialog(gprMode = false)
         }

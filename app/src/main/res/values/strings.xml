@@ -99,4 +99,16 @@
 
     <string name="permission_bluetooth_required">Bluetooth izni gereklidir</string>
     <string name="permission_location_required">Bluetooth taraması için konum izni gereklidir</string>
+
+    <string name="menu_detector">Detektör</string>
+    <string name="detector_title">Manyetometre Detektör</string>
+    <string name="detector_gain_label">Kazanç (10\u207F çarpan)</string>
+    <string name="detector_preserve_sign_label">İşareti koru (simetrik güçlendirme)</string>
+    <string name="detector_threshold_label">Algılama eşiği (gürültü tabanı)</string>
+    <string name="detector_measure_noise_button">Gürültüyü Ölç</string>
+    <string name="noise_measurement_warning_title">Gürültü Ölçümü</string>
+    <string name="noise_measurement_warning_message">Ölçüm sırasında telefonu sabit tutun ve yeni bir manyetik kaynağa yaklaştırmayın. Sonuç, algılama eşiği olarak otomatik ayarlanacaktır.</string>
+    <string name="noise_measurement_start_button">Başlat</string>
+    <string name="noise_measurement_result">Ölçülen gürültü tabanı: %.3f</string>
+    <string name="detector_frequency_label">Frekans bileşenleri (FFT, düşük frekans bandı)</string>
 </resources>

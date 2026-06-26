@@ -46,6 +46,14 @@
             android:text="@string/menu_magnetometer" />
 
         <Button
+            android:id="@+id/btnDetector"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/menu_detector" />
+
+        <Button
             android:id="@+id/btnGroundScan"
             style="@style/Widget.Material3.Button"
             android:layout_width="match_parent"
